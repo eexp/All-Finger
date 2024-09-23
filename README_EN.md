@@ -1,24 +1,22 @@
-Certainly! Here's an optimized version of your README:
-
----
-
 # Web Fingerprint All-in-One
 
 ![Allfinger Logo](https://raw.githubusercontent.com/eexp/pic/main/202408201730719.png)
 
-For the Chinese version, please refer to [README.md](README.md).
+[中文版](README.md)
 
 ## Introduction
 
-Allfinger is a powerful tool designed for identifying and recording web fingerprints. With a database of over 60,000 fingerprints, it offers fast and flexible scanning capabilities.
+**Allfinger** is a powerful tool for identifying and recording web fingerprints, featuring a database of over 60,000 fingerprints for fast and flexible scanning.
 
-## Features
+## Key Features
 
-- **Extensive Fingerprint Database**: Over 60,000 fingerprints.
-- **Fast Scanning**: Quickly scan targets.
-- **Flexible Export Options**: Supports multiple export formats.
+- 🚀 **Extensive Fingerprint Database**: Over 60,000 fingerprints for comprehensive coverage.
+- ⚡ **Fast Scanning**: Efficient scanning speed to save time.
+- 📂 **Flexible Export Options**: Supports multiple export formats to meet diverse needs.
 
 ## Quick Start
+
+Get started with Allfinger using the following commands:
 
 ```bash
 allfinger -u http://target.com 
@@ -31,31 +29,33 @@ allfinger -u http://target.com -t 200
 # Set thread count to 200
 
 allfinger -u http://target.com -t 200 -o tg.xlsx
-# Export results in json, xlsx, or db format (MySQL supported with config.yaml in the same directory)
+# Supports export in json, xlsx, db formats (currently db supports MySQL only, requires config.yaml in the same directory)
 
 allfinger -u http://target.com -m all
-# Full engine scan; default is "fast" mode. "All" mode uses more CPU resources
+# Full engine scan; default is "fast" for quick scanning. "all" performs a full engine scan with higher CPU usage
 
 allfinger -i 192.168.1.1/24,192.168.2.2
-# Scan a CIDR range
+# Scan CIDR range
 ```
 
-### Flags
+## Parameters
 
-- `-i, --cidr string` : Scan IP range, e.g., `-i=192.168.1.1/24,192.168.2.1`
-- `-h, --help` : Display help for cfingers
-- `-l, --local string` : Read assets from a local file for fingerprinting, supports no protocol, e.g., `192.168.1.1:9090 | http://192.168.1.1:9090`
-- `-m, --mode string` : Specify scan engine, default is fast mode (6 engines), e.g., `-m=fast`, `-m=all` (default "all")
-- `--mysql string` : Specify MySQL export output, e.g., `root:password@tcp(127.0.0.1:3306)/mysql`, or `mysql=config`
-- `-o, --output string` : Export results, supports json and xlsx file extensions, and parameters mysql, db, sql, e.g., `-o=db`, `-o=123.xlsx`
-- `-p, --proxy string` : Specify proxy for target access, supports http and socks5, e.g., `http://127.0.0.1:8080`, `socks5://127.0.0.1:8080`
-- `-s, --slient` : Silent output
-- `-t, --thread int` : Set fingerprint recognition thread pool size (default 100)
-- `-u, --url string` : Identify a single target
+| Parameter | Description |
+|-----------|-------------|
+| `-i, --cidr` | Scan IP range, e.g., `-i=192.168.1.1/24,192.168.2.1` |
+| `-h, --help` | Display help information |
+| `-l, --local` | Read assets from a local file for fingerprint recognition |
+| `-m, --mode` | Specify scanning engine, default is fast mode (6 engines) |
+| `--mysql` | Specify MySQL export output |
+| `-o, --output` | Output results, supports json and xlsx formats |
+| `-p, --proxy` | Specify proxy for accessing targets |
+| `-s, --slient` | Silent output |
+| `-t, --thread` | Fingerprint recognition thread pool size (default 100) |
+| `-u, --url` | Identify a single target |
 
 ## Configuration
 
-For database support (MySQL only), ensure a `config.yaml` file is in the same directory with the following content:
+Ensure a `config.yaml` file is in the same directory to support MySQL database:
 
 ```yaml
 database:
@@ -66,6 +66,23 @@ database:
   port: "3307"
 ```
 
+And pre-create the SQL table:
+
+```sql
+CREATE TABLE `port_scan_results` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `domain` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `ip` varchar(45) NOT NULL,
+  `port` int(11) NOT NULL,
+  `protocol` varchar(10),
+  `tls` varchar(10),
+  `cdn` varchar(5),
+  `cdn_name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+);
+```
+
 ## References
 
 - [ChainReactors Fingers](https://github.com/chainreactors/fingers)
@@ -74,5 +91,3 @@ database:
 - [Cobra](https://github.com/spf13/cobra)
 
 ---
-
-This version is more concise and organized, making it easier for users to understand and use your tool.
