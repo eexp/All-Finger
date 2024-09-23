@@ -5,12 +5,12 @@
 For English version, please refer to [README_EN.md](README_EN.md).
 ## 介绍
 
-Allfinger 是一款强大的工具，用于识别和记录网页指纹。拥有超过 60,000 个指纹的数据库，提供快速且灵活的扫描能力，是安全专业人士的必备工具。
+Allfinger 是一款强大的工具，用于识别和记录网页指纹。拥有超过 60,000 个指纹的数据库，提供快速且灵活的扫描能力。
 
 ## 功能
 
 - **广泛的指纹数据库**：超过 60,000 个指纹。
-- **快速扫描**：快速扫描目标。
+- **快速扫描**：超快的扫描速度。
 - **灵活的导出选项**：支持多种格式的导出。
 
 ## 快速开始
@@ -35,6 +35,7 @@ allfinger -i 192.168.1.1/24,192.168.2.2
 # 扫描 CIDR 范围
 ```
 
+## 参数说明
 ```
 Flags:
   -i, --cidr string     扫描ip段，例如：-i=192,168.1.1/24,192.168.2.1
@@ -51,7 +52,7 @@ Flags:
 
 ## 配置
 
-对于数据库支持（仅 MySQL），请确保在同一目录下有一个 config.yaml 文件，内容如下：
+对于数据库支持（仅 MySQL），请确保在同一目录下有一个 config.yaml 文件，以及预先创建好sql，内容如下：
 
 ```yaml
 database:
@@ -60,6 +61,21 @@ database:
   name: "fingers"
   host: "127.0.0.1"
   port: "3307"
+```
+
+```sql
+CREATE TABLE `port_scan_results` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `domain` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `ip` varchar(45) NOT NULL,
+  `port` int(11) NOT NULL,
+  `protocol` varchar(10) ,
+  `tls` varchar(10),
+  `cdn` varchar(5),           
+  `cdn_name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+);
 ```
 
 ## 参考
