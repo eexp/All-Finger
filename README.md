@@ -1,5 +1,3 @@
-为了让你的 README 更具吸引力和易读性，可以考虑以下优化：
-
 ---
 
 # Web Fingerprint All-in-One
