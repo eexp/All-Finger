@@ -1,5 +1,3 @@
----
-
 # Web Fingerprint All-in-One
 
 ![Allfinger Logo](https://raw.githubusercontent.com/eexp/pic/main/202408201730719.png)
