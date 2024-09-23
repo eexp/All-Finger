@@ -1,19 +1,26 @@
+为了让你的 README 更具吸引力和易读性，可以考虑以下优化：
+
+---
+
 # Web Fingerprint All-in-One
 
 ![Allfinger Logo](https://raw.githubusercontent.com/eexp/pic/main/202408201730719.png)
 
-For English version, please refer to [README_EN.md](README_EN.md).
+[English Version](README_EN.md)
+
 ## 介绍
 
-Allfinger 是一款强大的工具，用于识别和记录网页指纹。拥有超过 60,000 个指纹的数据库，提供快速且灵活的扫描能力。
+**Allfinger** 是一款功能强大的网页指纹识别工具，拥有超过 60,000 个指纹的数据库，提供快速且灵活的扫描能力。
 
-## 功能
+## 功能亮点
 
-- **广泛的指纹数据库**：超过 60,000 个指纹。
-- **快速扫描**：超快的扫描速度。
-- **灵活的导出选项**：支持多种格式的导出。
+- 🚀 **广泛的指纹数据库**：超过 60,000 个指纹，覆盖全面。
+- ⚡ **快速扫描**：高效的扫描速度，节省时间。
+- 📂 **灵活的导出选项**：支持多种格式的导出，满足不同需求。
 
 ## 快速开始
+
+使用以下命令快速启动 Allfinger：
 
 ```bash
 allfinger -u http://target.com 
@@ -36,23 +43,23 @@ allfinger -i 192.168.1.1/24,192.168.2.2
 ```
 
 ## 参数说明
-```
-Flags:
-  -i, --cidr string     扫描ip段，例如：-i=192,168.1.1/24,192.168.2.1
-  -h, --help            help for cfingers
-  -l, --local string    从本地文件读取资产，进行指纹识别，支持无协议，例如：192.168.1.1:9090 | http://192.168.1.1:9090
-  -m, --mode string     指定扫描时候引擎，默认快速模式（6个引擎），例如：-m=fast,-m=all (default "all")
-      --mysql string    指定mysql导出输出结果,root:password@tcp(127.0.0.1:3306)/mysql,或者config导入,mysql=config
-  -o, --output string   输出所有结果，支持json和xlsx后缀的文件。以及参数mysql,db,sql。例如 -o=db ,-o=123.xlsx
-  -p, --proxy string    指定访问目标时的代理，支持http代理和socks5，例如：http://127.0.0.1:8080、socks5://127.0.0.1:8080
-  -s, --slient          静默输出
-  -t, --thread int      指纹识别线程池大小。 (default 100)
-  -u, --url string      识别单个目标。
-```
+
+| 参数 | 描述 |
+|------|------|
+| `-i, --cidr` | 扫描 IP 段，例如：`-i=192.168.1.1/24,192.168.2.1` |
+| `-h, --help` | 显示帮助信息 |
+| `-l, --local` | 从本地文件读取资产进行指纹识别 |
+| `-m, --mode` | 指定扫描引擎，默认快速模式（6个引擎） |
+| `--mysql` | 指定 MySQL 导出输出结果 |
+| `-o, --output` | 输出结果，支持 json 和 xlsx 格式 |
+| `-p, --proxy` | 指定访问目标时的代理 |
+| `-s, --slient` | 静默输出 |
+| `-t, --thread` | 指纹识别线程池大小（默认 100） |
+| `-u, --url` | 识别单个目标 |
 
 ## 配置
 
-对于数据库支持（仅 MySQL），请确保在同一目录下有一个 config.yaml 文件，以及预先创建好sql，内容如下：
+确保在同一目录下有一个 `config.yaml` 文件以支持 MySQL 数据库：
 
 ```yaml
 database:
@@ -63,25 +70,28 @@ database:
   port: "3307"
 ```
 
+并预先创建 SQL 表：
+
 ```sql
 CREATE TABLE `port_scan_results` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `domain` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `ip` varchar(45) NOT NULL,
   `port` int(11) NOT NULL,
-  `protocol` varchar(10) ,
+  `protocol` varchar(10),
   `tls` varchar(10),
-  `cdn` varchar(5),           
+  `cdn` varchar(5),
   `cdn_name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 );
 ```
 
-## 参考
+## 参考资料
 
-- [https://github.com/chainreactors/fingers](https://github.com/chainreactors/fingers)
-- [https://github.com/lcvvvv/kscan/](https://github.com/lcvvvv/kscan/)
-- [https://github.com/panjf2000/ants/](https://github.com/panjf2000/ants/)
-- [https://github.com/spf13/cobra](https://github.com/spf13/cobra)
+- [ChainReactors Fingers](https://github.com/chainreactors/fingers)
+- [Kscan](https://github.com/lcvvvv/kscan/)
+- [Ants](https://github.com/panjf2000/ants/)
+- [Cobra](https://github.com/spf13/cobra)
 
+---
