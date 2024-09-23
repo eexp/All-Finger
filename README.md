@@ -35,6 +35,20 @@ allfinger -i 192.168.1.1/24,192.168.2.2
 # 扫描 CIDR 范围
 ```
 
+```
+Flags:
+  -i, --cidr string     扫描ip段，例如：-i=192,168.1.1/24,192.168.2.1
+  -h, --help            help for cfingers
+  -l, --local string    从本地文件读取资产，进行指纹识别，支持无协议，例如：192.168.1.1:9090 | http://192.168.1.1:9090
+  -m, --mode string     指定扫描时候引擎，默认快速模式（6个引擎），例如：-m=fast,-m=all (default "all")
+      --mysql string    指定mysql导出输出结果,root:password@tcp(127.0.0.1:3306)/mysql,或者config导入,mysql=config
+  -o, --output string   输出所有结果，支持json和xlsx后缀的文件。以及参数mysql,db,sql。例如 -o=db ,-o=123.xlsx
+  -p, --proxy string    指定访问目标时的代理，支持http代理和socks5，例如：http://127.0.0.1:8080、socks5://127.0.0.1:8080
+  -s, --slient          静默输出
+  -t, --thread int      指纹识别线程池大小。 (default 100)
+  -u, --url string      识别单个目标。
+```
+
 ## 配置
 
 对于数据库支持（仅 MySQL），请确保在同一目录下有一个 config.yaml 文件，内容如下：
