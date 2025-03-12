@@ -69,18 +69,16 @@ database:
 并预先创建 SQL 表：
 
 ```sql
-CREATE TABLE `port_scan_results` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `domain` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `ip` varchar(45) NOT NULL,
-  `port` int(11) NOT NULL,
-  `protocol` varchar(10),
-  `tls` varchar(10),
-  `cdn` varchar(5),
-  `cdn_name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-);
+CREATE TABLE IF NOT EXISTS finger_scan_results (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    url TEXT CHARACTER SET utf8mb4,
+    finger TEXT CHARACTER SET utf8mb4,
+    server TEXT CHARACTER SET utf8mb4,
+    statuscode INT,
+    bodylength INT,
+    title TEXT CHARACTER SET utf8mb4,
+    time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci
 ```
 
 ## 参考资料
