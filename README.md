@@ -77,7 +77,9 @@ CREATE TABLE IF NOT EXISTS finger_scan_results (
     statuscode INT,
     bodylength INT,
     title TEXT CHARACTER SET utf8mb4,
-    time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    md5hash VARCHAR(32),
+    mmh3hash VARCHAR(32)
 ) CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci
 ```
 
