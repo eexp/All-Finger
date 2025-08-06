@@ -1,9 +1,9 @@
 # Web Fingerprint All-in-One
 
-![Go](https://img.shields.io/badge/Go-1.18+-00ADD8.svg) ![License](https://img.shields.io/badge/License-MIT-blue.svg) ![Version](https://img.shields.io/badge/Version-1-green.svg)
+![Go](https://img.shields.io/badge/Go-1.24+-00ADD8.svg) ![License](https://img.shields.io/badge/License-MIT-blue.svg) ![Version](https://img.shields.io/badge/Version-1.1.16-green.svg)
 
-![](https://raw.githubusercontent.com/eexp/pic/main/202505261718921.png)
-
+![](https://raw.githubusercontent.com/eexp/pic/main/202508061546478.png)
+![](https://raw.githubusercontent.com/eexp/pic/main/202508061545951.png)
 **[English Version](README_EN.md)**
 
 ## 介绍
