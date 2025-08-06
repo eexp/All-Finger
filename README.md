@@ -2,7 +2,7 @@
 
 ![Go](https://img.shields.io/badge/Go-1.24+-00ADD8.svg) ![License](https://img.shields.io/badge/License-MIT-blue.svg) ![Version](https://img.shields.io/badge/Version-1.1.16-green.svg)
 
-![](https://raw.githubusercontent.com/eexp/pic/main/202508061626629.gif)
+![](https://raw.githubusercontent.com/eexp/pic/main/202508061632572.gif)
 
 **[English Version](README_EN.md)**
 
